@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
+import { MapComponent } from './shared/components/map/map.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ import { CommonModule } from '@angular/common';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
-
+    MapComponent,
     FooterComponent,
   ],
   templateUrl: './app.component.html',

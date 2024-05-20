@@ -72,7 +72,7 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content class="d-flex flex-column gap-2 min-vh-100">
+  <mat-sidenav-content class="d-flex flex-column min-vh-100">
     <mat-toolbar class="d-flex align-items-center gap-4">
       <i
         role="button"
@@ -84,9 +84,10 @@
         class="d-sm-block d-md-none"
         src="/assets/img/logo-sm.png"
         height="24px;" />
-      <span>Application Title</span>
+      <span>Attica Digital Twins</span>
     </mat-toolbar>
 
+    <app-map></app-map>
     <router-outlet class="flex-grow-1"></router-outlet>
 
     <app-footer></app-footer>
