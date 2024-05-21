@@ -7,4 +7,11 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./components/home/home.routes').then((m) => m.routes),
   },
+  {
+    path: 'athens-plant-nursery',
+    loadChildren: () =>
+      import(
+        './components/athens-plant-nursery/athens-plant-nursery.routes'
+      ).then((m) => m.routes),
+  },
 ];

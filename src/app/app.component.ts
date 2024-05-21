@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { MapComponent } from './shared/components/map/map.component';
+import { MapService } from './shared/services/map.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { MapComponent } from './shared/components/map/map.component';
   imports: [
     CommonModule,
     RouterOutlet,
+    RouterLink,
     MatIconModule,
     MatListModule,
     MatExpansionModule,
@@ -32,6 +34,8 @@ import { MapComponent } from './shared/components/map/map.component';
 })
 export class AppComponent {
   breakpointObserver = inject(BreakpointObserver);
+  router = inject(Router);
+  mapService = inject(MapService);
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -39,4 +43,9 @@ export class AppComponent {
       map((result) => result.matches),
       shareReplay(),
     );
+
+  onLogoClick() {
+    this.mapService.flyTo('attica');
+    this.router.navigate(['']);
+  }
 }
