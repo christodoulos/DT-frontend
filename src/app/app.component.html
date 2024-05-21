@@ -88,8 +88,11 @@
     </mat-toolbar>
 
     <app-map></app-map>
-    <router-outlet class="flex-grow-1"></router-outlet>
 
-    <app-footer></app-footer>
+    <div class="flex-grow-1 p-4">
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-footer class="d-block"></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
