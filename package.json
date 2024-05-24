@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build && rsync -avz --delete dist/DT-frontend/browser/* ubuntu@ntuacloud:DT-frontend"
   },
   "private": true,
   "dependencies": {
