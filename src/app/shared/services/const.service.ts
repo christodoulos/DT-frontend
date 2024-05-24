@@ -24,7 +24,7 @@ export class ConstService {
           properties: {
             route: 'athens-plant-nursery',
             title: 'Sewer Mining Technology',
-            description: `<img src="/assets/img/apn.jpg" style="width:100%">
+            description: `<img src="/assets/img/apn.jpg" style="height:100px; float: right;" class="ms-2 mb-2">
             <h6>Athens Plant Nursery</h6>
             <p>Sewer Mining is a treatment plant in a container in which:</p>
             <ul>
@@ -48,7 +48,7 @@ export class ConstService {
           properties: {
             route: 'innovations/farmair',
             title: 'Plant Stress Detection',
-            description: `<img src="/assets/img/farmair-drone.png" style="width:100%">
+            description: `<img src="/assets/img/farmair-drone.png" style="height:100px; float: right;" class="ms-2 mb-2">
               <h6>farmAIr @Kokkotou Vineyards</h6>
               <p><img src="/assets/img/farmAIr.png" style="float:right;width:100px;" /></p> 
               <p>FarmAIr technology (patented) uses thermal images and Artificial Intelligence to reveal Plant Stress before the onset of any symptom. FarmAIr helps farmers and agronomists spot what they cannot see with the naked eye, be aware, and take all necessary precautions to help prevent any spread. FarmAIr technology is currently available for vineyards, planning to gradually expand to virtually any plant with leaves.</p>`,
@@ -65,7 +65,7 @@ export class ConstService {
           properties: {
             route: 'analyses/hellinikon',
             title: 'Flood Risk Analysis',
-            description: `<img src="/assets/img/flood.png" style="width:100%">
+            description: `<img src="/assets/img/flood.png" style="height:100px; float: right;" class="ms-2 mb-2">
             <h6>Flood Risk Analysis</h6>
               <p>A hydraulic model plays a significant role in hydrodynamic analysis by simulating how water
                 flows within rivers, channels, and floodplains. It acts like a digital river simulator that
@@ -86,7 +86,7 @@ export class ConstService {
           },
           properties: {
             title: 'Advanced Sewer Mining Application',
-            description: `<img src="/assets/img/markopoulo.jpg" style="width:100%">
+            description: `<img src="/assets/img/markopoulo.jpg" style="height:100px; float: right;" class="ms-2 mb-2">
             <h6>Advanced Sewer Mining Application</h6>
             <p>The <em>Advanced Sewer Mining application</em> is essentially a treatment plant in a
             container, which, <strong>at the most energy efficient way</strong>, is able to extract wastewater from
@@ -116,7 +116,7 @@ export class ConstService {
           properties: {
             route: 'innovations/subsol',
             title: 'Controlled Environment Agriculture solution',
-            description: `<img src="/assets/img/alagro.png" style="width:100%">
+            description: `<img src="/assets/img/alagro.png" style="height:100px; float: right;" class="ms-2 mb-2">
             <h6>Controlled Environment Agriculture solution</h6>
             <p>
             <em>Controlled Environmental Agriculture (CEA) solutions</em> refer to agricultural
@@ -148,7 +148,7 @@ export class ConstService {
           properties: {
             title: 'Subsurface Water Solutions',
             route: 'innovations/subsol',
-            description: `<img src="/assets/img/subsol.jpg" style="width:100%">
+            description: `<img src="/assets/img/subsol.jpg" style="height:100px; float: right;" class="ms-2 mb-2">
               <h6>Subsurface Water Solutions</h6>
               <p>Subsurface Water Solutions (SWS) are a novel approach combining management and technology to protect, enlarge and utilize fresh groundwater resources. In Schinias (Marathon), we have tested an SWS configuration coupled with novel pollution remediation techniques, including Reverse Osmosis (RO) and Advanced Oxidation Methods (AOPs) to utilize deeper groundwater resources from karstic coastal aquifers, brackish groundwater treatment and groundwater recharge with infiltration in coastal aquifers to address a widespread problem in the Mediterranean: saltwater intrusion.</p>
               `,
