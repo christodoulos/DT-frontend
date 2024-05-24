@@ -33,44 +33,43 @@ export class HomeComponent implements OnInit, OnDestroy {
   });
 
   ngOnInit(): void {
-    this.mapService.mapInitialized
-      .pipe(take(1))
-      .subscribe((mapInitialized: boolean) => {
-        if (mapInitialized) {
-          this.showPins();
-          this.map.on('mouseenter', 'places', (e: any) => {
-            // Change the cursor style as a UI indicator.
-            this.map.getCanvas().style.cursor = 'pointer';
+    this.mapService.mapInitialized.subscribe((mapInitialized: boolean) => {
+      if (mapInitialized) {
+        this.showPins();
+        this.map.on('mouseenter', 'places', (e: any) => {
+          // Change the cursor style as a UI indicator.
+          this.map.getCanvas().style.cursor = 'pointer';
 
-            // Copy coordinates array.
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const description = e.features[0].properties.description;
-            // Be prepared for a route change.
-            this.potentialRoute = e.features[0].properties.route;
+          // Copy coordinates array.
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const description = e.features[0].properties.description;
+          // Be prepared for a route change.
+          this.potentialRoute = e.features[0].properties.route;
 
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
+          // Ensure that if the map is zoomed out such that multiple
+          // copies of the feature are visible, the popup appears
+          // over the copy being pointed to.
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
 
-            // Populate the popup and set its coordinates
-            // based on the feature found.
-            this.popup
-              .setLngLat(coordinates)
-              .setHTML(description)
-              .addTo(this.map);
-          });
+          // Populate the popup and set its coordinates
+          // based on the feature found.
+          this.popup
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(this.map);
+        });
 
-          this.map.on('mouseleave', 'places', () => {
-            this.map.getCanvas().style.cursor = '';
-            this.popup.remove();
-          });
+        this.map.on('mouseleave', 'places', () => {
+          this.map.getCanvas().style.cursor = '';
+          this.popup.remove();
+        });
 
-          this.map.on('dblclick', this.ondblclick);
-        }
-      });
+        this.map.on('dblclick', this.ondblclick);
+        this.map.on('touchmove', this.ondblclick);
+      }
+    });
   }
 
   ngOnDestroy(): void {

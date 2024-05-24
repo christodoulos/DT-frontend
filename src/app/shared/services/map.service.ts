@@ -9,9 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MapService {
   map: Map;
-  mapInitialized: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false,
-  );
+  mapInitialized = new BehaviorSubject<boolean>(false);
 
   constService = inject(ConstService);
 
