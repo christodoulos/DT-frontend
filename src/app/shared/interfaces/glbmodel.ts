@@ -1,4 +1,5 @@
-import { LngLatLike } from 'mapbox-gl';
+import { AnchorType } from '../types/threebox';
+import { ICoordinates } from './coordinates';
 
 export interface IScale {
   x: number;
@@ -8,10 +9,11 @@ export interface IScale {
 
 export interface IGLBModel {
   id: string;
-  coordinates: LngLatLike;
+  coordinates: ICoordinates;
   elevation: number;
   fileName: string;
   scale: IScale;
   rotation: IScale;
+  anchor: AnchorType;
   tooltip: string;
 }

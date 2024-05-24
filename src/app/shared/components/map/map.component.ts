@@ -13,6 +13,6 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.mapService.initMap();
-    this.mapService.flyTo('attica');
+    this.mapService.setLocation('attica');
   }
 }
