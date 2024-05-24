@@ -2,12 +2,16 @@ import { Injectable, inject } from '@angular/core';
 import { Map, NavigationControl, ScaleControl } from 'mapbox-gl';
 import { ConstService } from './const.service';
 import { ILocation } from '../interfaces/location';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MapService {
   map: Map;
+  mapInitialized: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false,
+  );
 
   constService = inject(ConstService);
 
@@ -32,6 +36,7 @@ export class MapService {
     // this.map.scrollZoom.disable();
 
     console.log('MapService.initializeMap Mapbox initialized');
+    this.mapInitialized.next(true);
   }
 
   flyTo(locationName: string) {
