@@ -36,7 +36,9 @@ export class MapService {
     // this.map.scrollZoom.disable();
 
     console.log('MapService.initializeMap Mapbox initialized');
-    this.mapInitialized.next(true);
+    this.map.on('load', () => {
+      this.mapInitialized.next(true);
+    });
   }
 
   flyTo(locationName: string) {
