@@ -1,8 +1,11 @@
+import { LngLatLike } from 'mapbox-gl';
+import { IGLBModel } from './glbmodel';
+
 export interface ILocation {
   name: string;
-  center: { lng: number; lat: number };
+  center: LngLatLike;
   zoom: number;
   bearing: number;
   pitch: number;
-  glbModels?: any[];
+  glbModels: IGLBModel[];
 }
