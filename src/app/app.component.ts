@@ -14,38 +14,36 @@ import { MapComponent } from './shared/components/map/map.component';
 import { MapService } from './shared/services/map.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-    MatIconModule,
-    MatListModule,
-    MatExpansionModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MapComponent,
-    FooterComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    selector: 'app-root',
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLink,
+        MatIconModule,
+        MatListModule,
+        MatExpansionModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MapComponent,
+        FooterComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
 })
 export class AppComponent {
-  breakpointObserver = inject(BreakpointObserver);
-  router = inject(Router);
-  mapService = inject(MapService);
+    breakpointObserver = inject(BreakpointObserver);
+    router = inject(Router);
+    mapService = inject(MapService);
 
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay(),
+    isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+        map((result) => result.matches),
+        shareReplay(),
     );
 
-  onLogoClick() {
-    this.mapService.flyTo('attica');
-    this.router.navigate(['']);
-  }
+    onLogoClick() {
+        this.mapService.flyTo('attica');
+        this.router.navigate(['']);
+    }
 }
