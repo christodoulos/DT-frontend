@@ -40,6 +40,7 @@
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
                             "node_modules/mapbox-gl/dist/mapbox-gl.css",
+                            "node_modules/threebox-plugin/dist/threebox.css",
                             "src/styles.css"
                         ],
                         "scripts": []
