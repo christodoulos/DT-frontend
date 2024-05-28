@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ILocation } from '../interfaces/location';
 import { GeometryType } from '../interfaces/geojson';
+import { ColDef, SizeColumnsToContentStrategy, SizeColumnsToFitGridStrategy, SizeColumnsToFitProvidedWidthStrategy } from 'ag-grid-community';
 
 @Injectable({
     providedIn: 'root',
@@ -243,5 +244,34 @@ export class ConstService {
             pitch: 22.4,
             glbModels: [],
         },
+    ];
+
+    defaultColDef = {
+        resizable: true,
+        filter: true,
+        sortable: true,
+        floatingFilter: true,
+        suppressMenu: true,
+        suppressSizeToFit: true,
+    };
+
+    autoSizeStrategy: SizeColumnsToFitGridStrategy | SizeColumnsToFitProvidedWidthStrategy | SizeColumnsToContentStrategy = {
+        type: 'fitCellContents',
+    };
+
+    APNPLC_COL_DEFS: ColDef[] = [
+        { field: 'ts', headerName: 'Timestamp', flex: 1 },
+        { field: 'col3', headerName: 'Tank 3', flex: 1 },
+        { field: 'col4', headerName: 'Tank 4', flex: 1 },
+        { field: 'col5', headerName: 'Tank 5', flex: 1 },
+        { field: 'col6', headerName: 'Tank 6', flex: 1 },
+        { field: 'col7', headerName: 'Tank 7', flex: 1 },
+        { field: 'col8', headerName: 'Tank 8', flex: 1 },
+        { field: 'col9', headerName: 'Tank 9', flex: 1 },
+        { field: 'col10', headerName: 'Tank 10', flex: 1 },
+        { field: 'col11', headerName: 'Tank 11', flex: 1 },
+        { field: 'col12', headerName: 'Tank 12', flex: 1 },
+        { field: 'col13', headerName: 'Tank 13', flex: 1 },
+        { field: 'col14', headerName: 'Tank 14', flex: 1 },
     ];
 }

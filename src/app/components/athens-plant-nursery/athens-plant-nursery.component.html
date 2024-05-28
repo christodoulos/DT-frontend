@@ -10,3 +10,12 @@
     decentralized water, energy, and materials circular solutions for cities in water-scarce areas. Finally, thermal energy recovery schemes were
     investigated to minimize the pilot’s environmental footprint.
 </p>
+
+<ag-grid-angular
+    [domLayout]="'autoHeight'"
+    [rowData]="lastPlcRecords"
+    [defaultColDef]="defaultColDef"
+    [columnDefs]="colDefs"
+    [pagination]="true"
+    [paginationPageSize]="50"
+    class="ag-theme-balham"></ag-grid-angular>
