@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -32,15 +32,24 @@ import { MapService } from './shared/services/map.service';
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     breakpointObserver = inject(BreakpointObserver);
     router = inject(Router);
     mapService = inject(MapService);
+    route = inject(ActivatedRoute);
+
+    iframe: string = '';
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
         map((result) => result.matches),
         shareReplay(),
     );
+
+    ngOnInit(): void {
+        setTimeout(() => {
+            this.route.snapshot.queryParams['iframe'] ? (this.iframe = this.route.snapshot.queryParams['iframe']) : (this.iframe = 'no');
+        }, 1000);
+    }
 
     onLogoClick() {
         this.mapService.flyTo('attica');

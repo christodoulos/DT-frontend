@@ -193,8 +193,8 @@ export class ConstService {
         },
         {
             name: 'athens-plant-nursery',
-            center: { lng: 23.783465732875, lat: 37.9873251405601 },
-            zoom: 17,
+            center: { lng: 23.781597756231037, lat: 37.98842485764375 },
+            zoom: 19,
             pitch: 81,
             bearing: 122,
             glbModels: [

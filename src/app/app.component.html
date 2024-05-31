@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container *ngIf="iframe === 'no'">
     <mat-sidenav
         #drawer
         class="sidenav"
@@ -95,3 +95,7 @@
         <app-footer class="d-block"></app-footer>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<div *ngIf="iframe === 'yes'">
+    <app-map [iframe]="'yes'"></app-map>
+</div>
