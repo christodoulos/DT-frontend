@@ -11,11 +11,14 @@
     investigated to minimize the pilot’s environmental footprint.
 </p>
 
-<ag-grid-angular
-    [domLayout]="'autoHeight'"
-    [rowData]="lastPlcRecords"
-    [defaultColDef]="defaultColDef"
-    [columnDefs]="colDefs"
-    [pagination]="true"
-    [paginationPageSize]="50"
-    class="ag-theme-balham"></ag-grid-angular>
+@if (showPLCTable) {
+    <ag-grid-angular
+        [domLayout]="'autoHeight'"
+        [rowData]="lastPlcRecords"
+        [defaultColDef]="defaultColDef"
+        [columnDefs]="colDefs"
+        [pagination]="true"
+        [paginationPageSize]="50"
+        [sortingOrder]="['desc', 'asc']"
+        class="ag-theme-balham"></ag-grid-angular>
+}

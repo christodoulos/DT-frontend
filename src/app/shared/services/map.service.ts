@@ -1,11 +1,12 @@
 import { Injectable, inject } from '@angular/core';
-import { CustomLayerInterface, LngLatLike, Map, NavigationControl, ScaleControl } from 'mapbox-gl';
+import { CustomLayerInterface, LngLatLike, Map, NavigationControl, Popup, ScaleControl } from 'mapbox-gl';
 import { Threebox } from 'threebox-plugin';
 import { ConstService } from './const.service';
 import { ILocation } from '../interfaces/location';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { AnchorType, ThreeDType } from '../types/threebox';
 import { IGLBModel } from '../interfaces/glbmodel';
+import { UtilsService } from './utils.service';
 
 declare global {
     interface Window {
@@ -21,12 +22,12 @@ window.tb = window.tb || {};
 export class MapService {
     map: Map;
     mapInitialized = new BehaviorSubject<boolean>(false);
+    apnPLCModelClicked = new Subject<string>();
 
     tb = window.tb;
 
     constService = inject(ConstService);
-
-    constructor() {}
+    utilsService = inject(UtilsService);
 
     initMap() {
         this.map = new Map({
@@ -135,7 +136,9 @@ export class MapService {
                 const pos = [where.lng, where.lat, elevation + terrainElevation];
                 model.setCoords(pos);
 
-                if (modelToolTip) model.addTooltip(modelToolTip, true);
+                model.addEventListener('SelectedChange', this.onSelectedChange.bind(this), false);
+
+                // if (modelToolTip) model.addTooltip(modelToolTip, true);
                 // model.modelCastShadow = true;
                 this.tb.lights.dirLight.target = model;
 
@@ -153,6 +156,33 @@ export class MapService {
                 resolve(customLayer);
             });
         });
+    }
+
+    onSelectedChange(event: any) {
+        let selectedObject = event.detail;
+
+        let selectedValue = selectedObject.selected;
+        if (selectedValue) {
+            const [lng, lat, alt] = selectedObject.coordinates;
+            console.log('Selected object:', lng, lat, alt);
+            const modelID = this.utilsService.getModelId(lng, lat);
+            if (modelID === 'apn-unit') {
+                this.apnPLCModelClicked.next(modelID);
+            }
+            console.log('Selected object:', modelID);
+            const model: IGLBModel = this.utilsService.getModel(modelID);
+
+            if (model && model.tooltip) {
+                const popup = new Popup({
+                    closeButton: true,
+                    closeOnClick: true,
+                    maxWidth: '500px',
+                });
+                popup.setLngLat([lng, lat]).setHTML(model.tooltip).addTo(this.map);
+            }
+        } else {
+            console.log('No object selected');
+        }
     }
 
     getTerrainElevation(lng: number, lat: number): Promise<number> {

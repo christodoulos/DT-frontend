@@ -5,6 +5,11 @@ import { IAPNPLC } from '../../shared/interfaces/APNPLC';
 import { AgGridAngular } from 'ag-grid-angular';
 import { GridApi, ColDef } from 'ag-grid-community';
 import { ConstService } from '../../shared/services/const.service';
+import { Popup } from 'mapbox-gl';
+
+function compareTimestamps(a: any, b: any): number {
+    return b.ts.$date - a.ts.$date;
+}
 
 @Component({
     selector: 'app-athens-plant-nursery',
@@ -18,10 +23,20 @@ export class AthensPlantNurseryComponent implements OnInit, OnDestroy {
     apnService = inject(ApnService);
     constService = inject(ConstService);
 
+    map = this.mapService.map;
+
     lastPlcRecords: IAPNPLC[] = [];
     defaultColDef: any;
     colDefs: ColDef[] = [];
     gridApi: GridApi<IAPNPLC>;
+
+    showPLCTable = false;
+
+    popup = new Popup({
+        closeButton: false,
+        closeOnClick: false,
+        maxWidth: '500px',
+    });
 
     ngOnInit() {
         this.defaultColDef = this.constService.defaultColDef;
@@ -29,7 +44,14 @@ export class AthensPlantNurseryComponent implements OnInit, OnDestroy {
 
         this.mapService.setLocation('athens-plant-nursery');
         this.apnService.getPlcRecords(5).subscribe((records) => {
+            records.sort(compareTimestamps);
+            console.log(records);
             this.lastPlcRecords = records;
+        });
+
+        this.mapService.apnPLCModelClicked.subscribe((plcId: string) => {
+            console.log('PLC model clicked:', plcId);
+            this.showPLCTable = !this.showPLCTable;
         });
     }
 

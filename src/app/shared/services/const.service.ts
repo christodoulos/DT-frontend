@@ -2,12 +2,26 @@ import { Injectable } from '@angular/core';
 import { ILocation } from '../interfaces/location';
 import { GeometryType } from '../interfaces/geojson';
 import { ColDef, SizeColumnsToContentStrategy, SizeColumnsToFitGridStrategy, SizeColumnsToFitProvidedWidthStrategy } from 'ag-grid-community';
+import moment from 'moment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ConstService {
     constructor() {}
+
+    readonly EYDAP_METRICS = {
+        date: '15/12/2023',
+        cod: '<15',
+        bod5: null,
+        NNH4: '0.242',
+        TSS: null,
+        TP: '0.533',
+        TN: '3.2',
+        NNO3: '2.3',
+        pH: '7.71',
+        EC: '518',
+    };
 
     readonly WELCOME_PINS = {
         type: 'geojson',
@@ -185,34 +199,47 @@ export class ConstService {
             bearing: 122,
             glbModels: [
                 {
-                    id: 'sm-tank-1',
+                    id: 'apn-unit',
                     coordinates: { lng: 23.781597756231037, lat: 37.98842485764375 },
                     elevation: 0,
-                    fileName: 'tank0',
+                    fileName: 'apn-unit',
                     scale: { x: 0.125, y: 0.125, z: 0.125 },
                     rotation: { x: 180, y: 90, z: 270 },
-                    anchor: 'bottom-left',
-                    tooltip: 'SMU Tank 1',
-                },
-                {
-                    id: 'sm-tank-2',
-                    coordinates: { lng: 23.7819436686587, lat: 37.98854376806914 },
-                    elevation: 0,
-                    fileName: 'tank0',
-                    scale: { x: 0.125, y: 0.125, z: 0.125 },
-                    rotation: { x: 180, y: 90, z: 270 },
-                    anchor: 'bottom-left',
-                    tooltip: 'SMU Tank 2',
-                },
-                {
-                    id: 'sm-tank-3',
-                    coordinates: { lng: 23.78228958108636, lat: 37.988662678494535 },
-                    elevation: 0,
-                    fileName: 'tank0',
-                    scale: { x: 0.125, y: 0.125, z: 0.125 },
-                    rotation: { x: 180, y: 90, z: 270 },
-                    anchor: 'bottom-left',
-                    tooltip: 'SMU Tank 3',
+                    anchor: 'top-left',
+                    tooltip: `
+                    <div style="font-family: Roboto; font-weight:normal">
+                    <h5>Qualitative Water Analysis (mg/l)</h5>
+                    <h6>${this.EYDAP_METRICS.date ?? '-'}</h6>
+                    <table class="table table-bordered" style="font-size:smaller">
+                        <thead>
+                            <tr>
+                                <th>COD</th>
+                                <th>BOD5</th>
+                                <th>NNH4</th>
+                                <th>TSS</th>
+                                <th>TP</th>
+                                <th>TN</th>
+                                <th>NNO3</th>
+                                <th>pH</th>
+                                <th>EC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>${this.EYDAP_METRICS.cod ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.bod5 ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.NNH4 ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.TSS ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.TP ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.TN ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.NNO3 ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.pH ?? '-'}</td>
+                                <td>${this.EYDAP_METRICS.EC ?? '-'}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>`,
+                    selectable: true,
                 },
                 {
                     id: 'tree0',
@@ -221,8 +248,9 @@ export class ConstService {
                     fileName: 'tree0',
                     scale: { x: 1, y: 1, z: 1 },
                     rotation: { x: 180, y: 90, z: 270 },
-                    anchor: 'bottom-left',
-                    tooltip: 'tree0',
+                    anchor: 'top-left',
+                    tooltip: '',
+                    selectable: false,
                 },
                 {
                     id: 'tree1',
@@ -231,8 +259,9 @@ export class ConstService {
                     fileName: 'tree1',
                     scale: { x: 1, y: 1, z: 1 },
                     rotation: { x: 180, y: 90, z: 270 },
-                    anchor: 'bottom-left',
-                    tooltip: 'tree1',
+                    anchor: 'top-left',
+                    tooltip: '',
+                    selectable: false,
                 },
             ],
         },
@@ -246,32 +275,32 @@ export class ConstService {
         },
     ];
 
-    defaultColDef = {
+    defaultColDef: ColDef = {
         resizable: true,
         filter: true,
         sortable: true,
         floatingFilter: true,
         suppressMenu: true,
-        suppressSizeToFit: true,
-    };
-
-    autoSizeStrategy: SizeColumnsToFitGridStrategy | SizeColumnsToFitProvidedWidthStrategy | SizeColumnsToContentStrategy = {
-        type: 'fitCellContents',
+        suppressAutoSize: true,
     };
 
     APNPLC_COL_DEFS: ColDef[] = [
-        { field: 'ts', headerName: 'Timestamp', flex: 1 },
-        { field: 'col3', headerName: 'Tank 3', flex: 1 },
-        { field: 'col4', headerName: 'Tank 4', flex: 1 },
-        { field: 'col5', headerName: 'Tank 5', flex: 1 },
-        { field: 'col6', headerName: 'Tank 6', flex: 1 },
-        { field: 'col7', headerName: 'Tank 7', flex: 1 },
-        { field: 'col8', headerName: 'Tank 8', flex: 1 },
-        { field: 'col9', headerName: 'Tank 9', flex: 1 },
-        { field: 'col10', headerName: 'Tank 10', flex: 1 },
-        { field: 'col11', headerName: 'Tank 11', flex: 1 },
-        { field: 'col12', headerName: 'Tank 12', flex: 1 },
-        { field: 'col13', headerName: 'Tank 13', flex: 1 },
-        { field: 'col14', headerName: 'Tank 14', flex: 1 },
+        {
+            field: 'ts',
+            headerName: 'Timestamp',
+            valueGetter: (params) => moment(params.data.ts.$date).format('DD/MM/YYYY HH:mm'),
+        },
+        { field: 'col3', headerName: 'Temperature' },
+        { field: 'col4', headerName: 'pH' },
+        { field: 'col5', headerName: 'DO ppm LDO aeriation' },
+        { field: 'col6', headerName: 'DO ppm anoxic' },
+        { field: 'col7', headerName: 'MLSS SOLID mg/l' },
+        { field: 'col8', headerName: 'MLSS SOLID mg/l' },
+        { field: 'col9', headerName: 'LDO DO ppm anoxic' },
+        { field: 'col10', headerName: 'Temperature anoxic' },
+        { field: 'col11', headerName: 'Turbidity NTU' },
+        { field: 'col12', headerName: 'LT1 mm' },
+        { field: 'col13', headerName: 'LT2 mm' },
+        { field: 'col14', headerName: 'LT3 mm' },
     ];
 }

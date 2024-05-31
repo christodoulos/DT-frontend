@@ -16,4 +16,5 @@ export interface IGLBModel {
     rotation: IScale;
     anchor: AnchorType;
     tooltip: string;
+    selectable: boolean;
 }
