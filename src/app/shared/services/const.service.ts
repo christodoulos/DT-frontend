@@ -238,9 +238,7 @@ export class ConstService {
                             </tr>
                         </tbody>
                     </table>
-                    <div style="font-size:xsmall">3D Sewer Mining Model by Maria Peteinaki (
-					mpeteinaki@gmail.com
-					)</div>
+                    <div style="font-size:xsmall">3D Sewer Mining Model by Maria Peteinaki</div>
                     </div>`,
                     selectable: true,
                 },
