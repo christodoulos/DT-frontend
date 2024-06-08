@@ -194,23 +194,23 @@ export class ConstService {
         {
             name: 'athens-plant-nursery',
             center: { lng: 23.781597756231037, lat: 37.98842485764375 },
-            zoom: 19,
+            zoom: 20,
             pitch: 81,
             bearing: 122,
             glbModels: [
                 {
                     id: 'apn-unit',
                     coordinates: { lng: 23.781597756231037, lat: 37.98842485764375 },
-                    elevation: 0,
+                    elevation: -10,
                     fileName: 'apn-unit',
-                    scale: { x: 0.125, y: 0.125, z: 0.125 },
-                    rotation: { x: 180, y: 90, z: 270 },
+                    scale: { x: 1, y: 1, z: 1 },
+                    rotation: { x: 0, y: 0, z: 90 },
                     anchor: 'top-left',
                     tooltip: `
                     <div style="font-family: Roboto; font-weight:normal">
                     <h5>Qualitative Water Analysis (mg/l)</h5>
                     <h6>${this.EYDAP_METRICS.date ?? '-'}</h6>
-                    <table class="table table-bordered" style="font-size:smaller">
+                    <table class="table table-bordered" style="font-size: smaller">
                         <thead>
                             <tr>
                                 <th>COD</th>
@@ -238,6 +238,9 @@ export class ConstService {
                             </tr>
                         </tbody>
                     </table>
+                    <div style="font-size:xsmall">3D Sewer Mining Model by Maria Peteinaki (
+					mpeteinaki@gmail.com
+					)</div>
                     </div>`,
                     selectable: true,
                 },

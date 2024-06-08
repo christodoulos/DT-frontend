@@ -30,7 +30,7 @@ export class AthensPlantNurseryComponent implements OnInit, OnDestroy {
     colDefs: ColDef[] = [];
     gridApi: GridApi<IAPNPLC>;
 
-    showPLCTable = false;
+    showPLCTable = true;
 
     popup = new Popup({
         closeButton: false,
@@ -43,16 +43,15 @@ export class AthensPlantNurseryComponent implements OnInit, OnDestroy {
         this.colDefs = this.constService.APNPLC_COL_DEFS;
 
         this.mapService.setLocation('athens-plant-nursery');
-        this.apnService.getPlcRecords(5).subscribe((records) => {
+        this.apnService.getPlcRecords(60).subscribe((records) => {
             records.sort(compareTimestamps);
-            console.log(records);
             this.lastPlcRecords = records;
         });
 
-        this.mapService.apnPLCModelClicked.subscribe((plcId: string) => {
-            console.log('PLC model clicked:', plcId);
-            this.showPLCTable = !this.showPLCTable;
-        });
+        // this.mapService.apnPLCModelClicked.subscribe((plcId: string) => {
+        //     console.log('PLC model clicked:', plcId);
+        //     this.showPLCTable = !this.showPLCTable;
+        // });
     }
 
     ngOnDestroy() {

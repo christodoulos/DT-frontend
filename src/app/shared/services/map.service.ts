@@ -59,8 +59,8 @@ export class MapService {
             defaultLights: true,
             realSunlight: true,
             enableSelectingObjects: true,
-            enableDraggingObjects: true,
-            enableHelpTooltips: true,
+            enableDraggingObjects: false,
+            enableHelpTooltips: false,
         });
 
         console.log('Threebox initialized');
@@ -137,9 +137,12 @@ export class MapService {
                 model.setCoords(pos);
 
                 model.addEventListener('SelectedChange', this.onSelectedChange.bind(this), false);
+                // model.addEventListener('ObjectMouseOver', this.onObjectMouseOver.bind(this), false);
+                // model.addEventListener('ObjectMouseOut', this.onObjectMouseOut.bind(this), false);
 
-                // if (modelToolTip) model.addTooltip(modelToolTip, true);
-                // model.modelCastShadow = true;
+                if (modelToolTip) model.addTooltip(modelToolTip, true);
+                model.modelCastShadow = true;
+
                 this.tb.lights.dirLight.target = model;
 
                 const customLayer: CustomLayerInterface = {
@@ -158,12 +161,22 @@ export class MapService {
         });
     }
 
+    onObjectMouseOver(event: any) {
+        console.log('MOUSE OVER', event);
+    }
+
+    onObjectMouseOut(event: any) {
+        console.log('Mouse OUT', event);
+    }
+
     onSelectedChange(event: any) {
         let selectedObject = event.detail;
+        console.log('Selected object:', selectedObject);
 
         let selectedValue = selectedObject.selected;
         if (selectedValue) {
             const [lng, lat, alt] = selectedObject.coordinates;
+            console.log(selectedObject);
             console.log('Selected object:', lng, lat, alt);
             const modelID = this.utilsService.getModelId(lng, lat);
             if (modelID === 'apn-unit') {
@@ -171,15 +184,6 @@ export class MapService {
             }
             console.log('Selected object:', modelID);
             const model: IGLBModel = this.utilsService.getModel(modelID);
-
-            if (model && model.tooltip) {
-                const popup = new Popup({
-                    closeButton: true,
-                    closeOnClick: true,
-                    maxWidth: '500px',
-                });
-                popup.setLngLat([lng, lat]).setHTML(model.tooltip).addTo(this.map);
-            }
         } else {
             console.log('No object selected');
         }
