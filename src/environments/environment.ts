@@ -1,3 +1,3 @@
 export const environment = {
-    API_URL: 'http://atticadt-backend.ddns.net',
+    API_URL: 'https://atticadt-backend.ddns.net',
 };

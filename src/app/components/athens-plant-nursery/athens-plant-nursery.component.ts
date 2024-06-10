@@ -6,6 +6,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { GridApi, ColDef } from 'ag-grid-community';
 import { ConstService } from '../../shared/services/const.service';
 import { Popup } from 'mapbox-gl';
+import { MatTabsModule } from '@angular/material/tabs';
 
 function compareTimestamps(a: any, b: any): number {
     return b.ts.$date - a.ts.$date;
@@ -14,7 +15,7 @@ function compareTimestamps(a: any, b: any): number {
 @Component({
     selector: 'app-athens-plant-nursery',
     standalone: true,
-    imports: [AgGridAngular],
+    imports: [AgGridAngular, MatTabsModule],
     templateUrl: './athens-plant-nursery.component.html',
     styleUrl: './athens-plant-nursery.component.css',
 })

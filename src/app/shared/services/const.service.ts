@@ -29,7 +29,6 @@ export class ConstService {
             type: 'FeatureCollection',
             features: [
                 {
-                    _id: 'pin-1',
                     id: 'pin-1',
                     type: 'Feature',
                     geometry: {
@@ -39,21 +38,25 @@ export class ConstService {
                     properties: {
                         route: 'athens-plant-nursery',
                         title: 'Sewer Mining Technology',
-                        description: `<img src="/assets/img/apn.jpg" style="height:100px; float: right;" class="ms-2 mb-2">
-            <h6>Athens Plant Nursery</h6>
-            <p>Sewer Mining is a treatment plant in a container in which:</p>
-            <ul>
-              <li>wastewater is extracted from local sewers that run under every location of a city</li>
-              <li>treated directly on site in a distributed system</li>
-              <li>high quality water is produced (at the point of demand) suitable for irrigation of green areas, groundwater recharge and other urban uses.</li>
-            </ul>
-            <p>The main idea of this technology is that we use a resource (wastewater) that lies beneath every part of a city to produce clean water and reduce pressures due to water scarcity.</p>
-            <p>Sewer Mining technology is a distributed, flexible and autonomous circular economy solution.</p>
-            `,
+                        description: `
+                        <div class="lh-base">
+                            <img src="/assets/img/apn.jpg" style="height:150px; float: right;" class="ms-2 mb-2">
+                            <h6 class="mt-2">Athens Plant Nursery</h6>
+                            Sewer Mining is a treatment plant in a container in which:
+                            <ul>
+                                <li>wastewater is extracted from local sewers that run under every location of a city</li>
+                                <li>treated directly on site in a distributed system</li>
+                                <li>high quality water is produced (at the point of demand) suitable for irrigation of green areas, 
+                                    groundwater recharge and other urban uses.</li>
+                            </ul>
+                            The main idea of this technology is that we use a resource (wastewater) that lies beneath every part of 
+                            a city to produce clean water and reduce pressures due to water scarcity. 
+                            Sewer Mining technology is a distributed, flexible and autonomous circular economy solution.
+                        </div>
+                        `,
                     },
                 },
                 {
-                    _id: 'pin-2',
                     id: 'pin-2',
                     type: 'Feature',
                     geometry: {
@@ -63,14 +66,13 @@ export class ConstService {
                     properties: {
                         route: 'innovations/farmair',
                         title: 'Plant Stress Detection',
-                        description: `<img src="/assets/img/farmair-drone.png" style="height:100px; float: right;" class="ms-2 mb-2">
+                        description: `<img src="/assets/img/farmair-drone.png" style="height:100px; float: right;" class="m-2">
               <h6>farmAIr @Kokkotou Vineyards</h6>
               <p><img src="/assets/img/farmAIr.png" style="float:right;width:100px;" /></p> 
               <p>FarmAIr technology (patented) uses thermal images and Artificial Intelligence to reveal Plant Stress before the onset of any symptom. FarmAIr helps farmers and agronomists spot what they cannot see with the naked eye, be aware, and take all necessary precautions to help prevent any spread. FarmAIr technology is currently available for vineyards, planning to gradually expand to virtually any plant with leaves.</p>`,
                     },
                 },
                 {
-                    _id: 'pin-3',
                     id: 'pin-3',
                     type: 'Feature',
                     geometry: {
@@ -80,7 +82,7 @@ export class ConstService {
                     properties: {
                         route: 'analyses/hellinikon',
                         title: 'Flood Risk Analysis',
-                        description: `<img src="/assets/img/flood.png" style="height:100px; float: right;" class="ms-2 mb-2">
+                        description: `<img src="/assets/img/flood.png" style="height:100px; float: right;" class="m-2">
             <h6>Flood Risk Analysis</h6>
               <p>A hydraulic model plays a significant role in hydrodynamic analysis by simulating how water
                 flows within rivers, channels, and floodplains. It acts like a digital river simulator that
@@ -92,7 +94,6 @@ export class ConstService {
                     },
                 },
                 {
-                    _id: 'pin-4',
                     id: 'pin-4',
                     type: 'Feature',
                     geometry: {
@@ -101,7 +102,7 @@ export class ConstService {
                     },
                     properties: {
                         title: 'Advanced Sewer Mining Application',
-                        description: `<img src="/assets/img/markopoulo.jpg" style="height:100px; float: right;" class="ms-2 mb-2">
+                        description: `<img src="/assets/img/markopoulo.jpg" style="height:100px; float: right;" class="m-2">
             <h6>Advanced Sewer Mining Application</h6>
             <p>The <em>Advanced Sewer Mining application</em> is essentially a treatment plant in a
             container, which, <strong>at the most energy efficient way</strong>, is able to extract wastewater from
@@ -121,7 +122,6 @@ export class ConstService {
                     },
                 },
                 {
-                    _id: 'pin-5',
                     id: 'pin-5',
                     type: 'Feature',
                     geometry: {
@@ -131,7 +131,7 @@ export class ConstService {
                     properties: {
                         route: 'innovations/subsol',
                         title: 'Controlled Environment Agriculture solution',
-                        description: `<img src="/assets/img/alagro.png" style="height:100px; float: right;" class="ms-2 mb-2">
+                        description: `<img src="/assets/img/alagro.png" style="height:100px; float: right;" class="m-2">
             <h6>Controlled Environment Agriculture solution</h6>
             <p>
             <em>Controlled Environmental Agriculture (CEA) solutions</em> refer to agricultural
@@ -153,7 +153,6 @@ export class ConstService {
                     },
                 },
                 {
-                    _id: 'pin-6',
                     id: 'pin-6',
                     type: 'Feature',
                     geometry: {
@@ -163,7 +162,7 @@ export class ConstService {
                     properties: {
                         title: 'Subsurface Water Solutions',
                         route: 'innovations/subsol',
-                        description: `<img src="/assets/img/subsol.jpg" style="height:100px; float: right;" class="ms-2 mb-2">
+                        description: `<img src="/assets/img/subsol.jpg" style="height:100px; float: right;" class="m-2">
               <h6>Subsurface Water Solutions</h6>
               <p>Subsurface Water Solutions (SWS) are a novel approach combining management and technology to protect, enlarge and utilize fresh groundwater resources. In Schinias (Marathon), we have tested an SWS configuration coupled with novel pollution remediation techniques, including Reverse Osmosis (RO) and Advanced Oxidation Methods (AOPs) to utilize deeper groundwater resources from karstic coastal aquifers, brackish groundwater treatment and groundwater recharge with infiltration in coastal aquifers to address a widespread problem in the Mediterranean: saltwater intrusion.</p>
               `,

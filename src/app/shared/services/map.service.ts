@@ -59,8 +59,8 @@ export class MapService {
             defaultLights: true,
             realSunlight: true,
             enableSelectingObjects: true,
-            enableDraggingObjects: false,
-            enableHelpTooltips: false,
+            enableDraggingObjects: true,
+            enableHelpTooltips: true,
         });
 
         console.log('Threebox initialized');

@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.showPins();
                 this.map.on('mouseenter', 'places', (e: any) => {
                     // Change the cursor style as a UI indicator.
-                    this.map.getCanvas().style.cursor = 'pointer';
+                    this.map.getCanvas().style.cursor = 'pointer !important';
 
                     // Copy coordinates array.
                     const coordinates = e.features[0].geometry.coordinates.slice();
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                     this.popup.remove();
                 });
 
-                this.map.on('dblclick', this.ondblclick);
+                this.map.on('click', this.ondblclick);
                 this.map.on('touchmove', this.ondblclick);
             }
         });
