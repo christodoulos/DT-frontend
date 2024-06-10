@@ -254,7 +254,7 @@ export class ConstService {
                 },
                 {
                     id: 'tree1',
-                    coordinates: { lng: 23.7814285202821, lat: 37.9882444002644 },
+                    coordinates: { lng: 23.7818756050794, lat: 37.9885660930539 },
                     elevation: 0,
                     fileName: 'tree1',
                     scale: { x: 1, y: 1, z: 1 },
