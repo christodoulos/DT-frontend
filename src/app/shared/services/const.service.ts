@@ -11,16 +11,16 @@ export class ConstService {
     constructor() {}
 
     readonly EYDAP_METRICS = {
-        date: '15/12/2023',
-        cod: '<15',
+        date: '30/05/2024',
+        cod: null,
         bod5: null,
-        NNH4: '0.242',
+        NNH4: '1.93',
         TSS: null,
-        TP: '0.533',
-        TN: '3.2',
-        NNO3: '2.3',
-        pH: '7.71',
-        EC: '518',
+        TP: '0.75',
+        TN: '6.31',
+        NNO3: '4.10',
+        pH: '7.61',
+        EC: '654',
     };
 
     readonly WELCOME_PINS = {
@@ -192,9 +192,9 @@ export class ConstService {
         },
         {
             name: 'athens-plant-nursery',
-            center: { lng: 23.781597756231037, lat: 37.98842485764375 },
-            zoom: 20,
-            pitch: 81,
+            center: { lng: 23.781645, lat: 37.98816 },
+            zoom: 18.5,
+            pitch: 66,
             bearing: 122,
             glbModels: [
                 {

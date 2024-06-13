@@ -42,7 +42,7 @@ export class MapService {
         });
 
         // Add zoom and rotation controls to the map.
-        this.map.addControl(new NavigationControl());
+        // this.map.addControl(new NavigationControl());
         this.map.addControl(new ScaleControl());
         // this.map.scrollZoom.disable();
 
